@@ -76,6 +76,21 @@ parser.add_argument(
           "NACT (used in saving the trained model),"
           "default='celltype'"),
 )
+parser.add_argument("--use_raw_x",
+                    type=bool,
+                    default=False,
+                    help=("Whether to use adata.X (if set to 'False'decay flag,"
+                          "or to use adata.raw.X (if set to 'True'). This "
+                          "option depends on the type of preprocessing done."
+                          "default=False")
+                   )
+parser.add_argument("--is_there_validation_split",
+                    type=bool,
+                    default=False,
+                    help=("Whether our annoted data also contains a "
+                          "'validation' split or just contains the "
+                          "'train'/'test' splits. default=False")
+                   )
 parser.add_argument("--data_path",
                     type=str,
                     default=None,
@@ -252,11 +267,11 @@ def main():
         # to torch dataloader
         train_data_loader, valid_data_loader = scanpy_to_dataloader(
             scanpy_object=adata,
-            test_no_valid=True,
+            test_no_valid= not opt.is_there_validation_split,
             batch_size=opt.batch_size,
             workers=opt.workers,
             verbose=1,
-            raw_x=True)
+            raw_x=opt.use_raw_x)
 
         # Getting input output information for the network
         num_genes = [
