@@ -24,7 +24,9 @@ We provide an example of these parameters in the companion bash script `run_nact
 $ bash run_nact_trainer.sh
 ```
 ## Post Training Analyses and Tutorials
-We have compiled a set of notebooks as tutorials to showcase N-ACT's capabilities and interptretability. These notebooks located [here](https://github.com/SindiLab/Tutorials/tree/main/N-ACT). Please feel free to open a new issues with any questions or request for new tutorials.
+We have compiled a set of notebooks as tutorials to showcase N-ACT's capabilities and interptretability. These notebooks located [here](https://github.com/SindiLab/Tutorials/tree/main/N-ACT).
+
+**Please feel free to open issues for any questions or requests for additional tutorials!**
 
 ## Citation
 If you found our work useful for your ressearch, please cite our preprint:
